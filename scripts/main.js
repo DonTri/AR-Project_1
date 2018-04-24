@@ -2,8 +2,6 @@ var stream, video;
 var canvas = document.getElementById('canvas');
 
 
-
-
 if (hasUserMedia()) {
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia;
@@ -12,37 +10,35 @@ if (hasUserMedia()) {
     navigator.getUserMedia({
         video: true,
         audio: false
-    }, function(stream) {
+    }, function (stream) {
         video = document.querySelector('video');
 
-        //strech the video
-        //video.width = 320;
+        //strech the video 
 
-        video.setAttribute('height', window.innerHeight);
-
-        video.oncanplay = function() {
+        video.oncanplay = function () {
             //set the size of the canvas same as video's
-            
-            video.width = 100;
-            canvas.width = video.videoWidth;
-            canvas.style.width = video.width;
-            console.log(video.width);
-  			console.log(video.videoWidth);
 
+            video.style.height = window.innerHeight + 'px';
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.style.height = window.innerHeight + 'px';
+            canvas.style.width = (canvas.width / canvas.height) * window.innerHeight + 'px';
+
+            document.getElementById('container').style.height = window.innerHeight + 'px';
+            document.getElementById('container').style.width = (canvas.width / canvas.height) * window.innerHeight + 'px';
         }
 
         /*//set the size of the canvas same as video's
         canvas.setAttribute('height', video.height);
         canvas.width = video.width + 'px';*/
 
-        setVideosPosition();
-        setCanvasPosition();
-
+        // setVideosPosition();
+        // setCanvasPosition();
         //inserting our stream to the video tag     
         video.srcObject = stream; //doing the same as the command infront: video.src = window.URL.createObjectURL(stream);
 
 
-    }, function(err) {});
+    }, function (err) {});
 
 } else {
     alert("WebRTC is not supported");
@@ -56,7 +52,6 @@ function hasUserMedia() {
     return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia);
 }
-
 
 
 //set videos position in the middle of the window
@@ -74,8 +69,6 @@ function setCanvasPosition() {
     canvas.style.top = rect.top + "px";
     canvas.style.bottom = rect.bottom + "px";
 }
-
-
 
 
 //************************* BUTTONS *************************//
