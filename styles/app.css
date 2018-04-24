@@ -1,0 +1,27 @@
+body{
+	margin: 0;
+	background-color: lightblue;
+}
+
+
+
+#canvas {
+	position:relative;
+	z-index: 1;
+	width: 480;
+	height: 100;
+
+}
+
+#video {
+	position: fixed;
+	/*top:50px;
+    bottom: 40px;*/
+    right: 200px;
+    left: 200px;
+    z-index: 2;
+
+}
+
+
+/*  ******************      COMMENT    ***********************  */
