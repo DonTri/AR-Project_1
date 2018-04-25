@@ -24,11 +24,15 @@ if (hasUserMedia()) {
             canvas.style.height = window.innerHeight + 'px';
             canvas.style.width = (canvas.width / canvas.height) * window.innerHeight + 'px';
 
-            console.log("plasmatiko height: "+ video.height +"   pragmatiko height: "+video.videoHeight);
-            console.log("plasmatiko width: "+ video.width +"   pragmatiko width: "+video.videoWidth);
+            console.log("plasmatiko height canva: "+ canvas.height +"   pragmatiko height canva: "+canvas.style.height);
+            console.log("plasmatiko width canva: "+ canvas.width +"   pragmatiko width canva: "+canvas.style.height);
+
+            console.log("plasmatiko height video: "+ video.videoHeight +"   pragmatiko height video: "+video.style.height);
+            console.log("plasmatiko width video: "+ video.videoWidth +"   pragmatiko width video: "+video.style.width);
 
             document.getElementById('container').style.height = window.innerHeight + 'px';
             document.getElementById('container').style.width = (canvas.width / canvas.height) * window.innerHeight + 'px';
+
         }
 
         /*//set the size of the canvas same as video's
