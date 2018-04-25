@@ -24,6 +24,9 @@ if (hasUserMedia()) {
             canvas.style.height = window.innerHeight + 'px';
             canvas.style.width = (canvas.width / canvas.height) * window.innerHeight + 'px';
 
+            console.log("plasmatiko height: "+ video.height +"   pragmatiko height: "+video.videoHeight);
+            console.log("plasmatiko width: "+ video.width +"   pragmatiko width: "+video.videoWidth);
+
             document.getElementById('container').style.height = window.innerHeight + 'px';
             document.getElementById('container').style.width = (canvas.width / canvas.height) * window.innerHeight + 'px';
         }
