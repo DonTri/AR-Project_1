@@ -14,10 +14,25 @@
 	<div id='container'>
 		<canvas id="canvas"></canvas>
 		<video autoplay id="video"></video>
+		<div id='buttonsInside'>
+			<button id="classicButton" type="button" onclick="drawWithSeriouslyEffects('edge')">Edge Me!</button>
+			<button id="classicButton" type="button" onclick="drawWithSeriouslyEffects('blend')">Blend me!</button>
+			<button id="classicButton" type="button" onclick="drawWithSeriouslyEffects('blur')">Blur Me!</button>			
+		</div>>
+
+
 	</div>
 
+	<button id="buttonClear" type="button" onclick="drawWithSeriouslyEffects('edge')">Clear Me!</button>
+	
 
-	<!-- **************************  scripts  **************************** -->	
+	<!-- **************************  scripts  **************************** -->
+	<script src="vendor/three.min.js"></script>
+	<script src="vendor/OrbitControls.js"></script>
+	<script src="vendor/seriously.js" ></script>
+	<script src="vendor/effects/seriously.blur.js " ></script>
+	<script src="vendor/effects/seriously.blend.js " ></script>
+	<script src="vendor/effects/seriously.edge.js " ></script>
 	<script src="scripts/main.js"></script>
 
 </body>
