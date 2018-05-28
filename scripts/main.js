@@ -8,11 +8,13 @@
 // ! *************************** global variables **************************** ! \\
 // ! ************************************************************************* ! \\
 var stream, lastTimeThatIpainted;
-var renderer, scene, camera, controls, mesh;
+var renderer, scene, camera, controls, mesh, robot;
 
 var canvas = document.getElementById('canvas');
+var canvas3d = document.getElementById('canvas3d');
 var video = document.getElementById('video');
 var context = canvas.getContext("experimental-webgl");
+var context3d = canvas3d.getContext("experimental-webgl");
 
 
 
@@ -25,10 +27,8 @@ var xronosPouPrepeiNaPeraseiGiaNaExwMaxFPS3 = 1000 / fps; // 1000ms dia fps
 
 
 
-
+waitingScene(); //initialPage.js file
 init();
-addScene();
-animate();
 
 
 
@@ -50,6 +50,13 @@ function init() {
             video.oncanplay = function() {
                     //set the size of the canvas same as video's
                     setSizes();
+                    addScene();
+                    //killLoader();
+                    var container_start = document.getElementById("container-start");
+                    container_start.remove();
+
+                    animate();
+
                 }
                 //inserting our stream to the video tag     
             video.srcObject = stream; //doing the same as the command infront: video.src = window.URL.createObjectURL(stream);
@@ -160,7 +167,7 @@ function addScene() {
     scene.add(camera);
 
     renderer = new THREE.WebGLRenderer({
-        canvas: canvas,
+        canvas: canvas3d,
         alpha: true
     }); // init like this
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -178,7 +185,9 @@ function addScene() {
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(0, 0, 800);
     scene.add(mesh);
-
+    load({
+        url: "models3D/plant/houseplant"
+    });
     // on effectue le rendu de la scène
     renderer.render(scene, camera);
 
