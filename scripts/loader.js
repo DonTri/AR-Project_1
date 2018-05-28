@@ -24,11 +24,13 @@ function load(args) {
           objLoader.load(args.url + '.obj', args.url + '.mtl');*/
 
     var mtlLoader = new THREE.MTLLoader();
-    mtlLoader.load(args.url + '.mtl', function(materials) {
+    mtlLoader.load(args.url + '.mtl', function (materials) {
         materials.preload();
+
         var objLoader = new THREE.OBJLoader();
         objLoader.setMaterials(materials);
-        objLoader.load(args.url + ".obj", function(object) {
+        objLoader.load(args.url + ".obj", function (object) {
+            object.scale.set(10, 10, 10);
             scene.add(object);
         });
     });
@@ -37,11 +39,17 @@ function load(args) {
     scene.add(light);
     var light2 = new THREE.PointLight(0xff0000, 1, 10000);
     light2.position.set(50, 50, 50);
-    scene.add(light);
+    // scene.add(light2);
+
+    var sphereSize = 1000;
+    var pointLightHelper = new THREE.PointLightHelper(light2, sphereSize);
+    // scene.add(pointLightHelper);
+
+    var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(-1, -1, -1);
+    scene.add(directionalLight);
 
 }
-
-
 
 
 /*  var mesh = null;

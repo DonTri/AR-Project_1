@@ -17,19 +17,13 @@ var context = canvas.getContext("experimental-webgl");
 var context3d = canvas3d.getContext("experimental-webgl");
 
 
-
-
 //var context = canvas.getContext('2d');
 var fps = 3;
 var xronosPouPrepeiNaPeraseiGiaNaExwMaxFPS3 = 1000 / fps; // 1000ms dia fps
 
 
-
-
-
 waitingScene(); //initialPage.js file
 init();
-
 
 
 // ! ************************************************************************* ! \\
@@ -45,9 +39,9 @@ function init() {
         navigator.getUserMedia({
             video: true,
             audio: false
-        }, function(stream) {
+        }, function (stream) {
             //lastTimeThatIpainted = Date.now(); 
-            video.oncanplay = function() {
+            video.oncanplay = function () {
                     //set the size of the canvas same as video's
                     setSizes();
                     addScene();
@@ -61,17 +55,13 @@ function init() {
                 //inserting our stream to the video tag     
             video.srcObject = stream; //doing the same as the command infront: video.src = window.URL.createObjectURL(stream);
 
-        }, function(err) {});
+        }, function (err) {});
 
     } else {
         alert("WebRTC is not supported");
     }
 
 }
-
-
-
-
 
 
 // ! **************************************************************************** ! \\
@@ -117,7 +107,6 @@ function setSizes() {
     });
 
 
-
 }
 
 //set videos position in the middle of the window   !!!! den douleuei !!!!
@@ -156,7 +145,6 @@ function drawWithSeriouslyEffects(filter) {
 }
 
 
-
 function addScene() {
     //////// 3d 
     scene = new THREE.Scene();
@@ -186,7 +174,7 @@ function addScene() {
     mesh.position.set(0, 0, 800);
     scene.add(mesh);
     load({
-        url: "models3D/plant/houseplant"
+        url: "models3D/shelf"
     });
     // on effectue le rendu de la scène
     renderer.render(scene, camera);
@@ -195,9 +183,6 @@ function addScene() {
 
 
 }
-
-
-
 
 
 // ! **************************************************************************** ! \\
@@ -212,19 +197,11 @@ function animate() {
 }
 
 
-
-
-
-
-
-
-
 //************************* BUTTONS *************************//
 /*btnGetAudioTracks.addEventListener("click", function() {
     console.log("getAudioTracks");
     console.log(stream.getAudioTracks());
 });*/
-
 
 
 /*  function that draws black and white    // call it like this ----> draw(video, context, canvas.width, canvas.height);  ///
